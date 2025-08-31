@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ibrahim's Portfolio</title>
 
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       display: flex;
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
 
     /* Sidebar */
@@ -26,7 +27,8 @@
       top: 0;
       left: 0;
       padding-top: 30px;
-      transition: background 0.3s;
+      transition: transform 0.4s ease, background 0.3s;
+      z-index: 1000;
     }
 
     .sidebar h2 {
@@ -34,43 +36,48 @@
       margin-bottom: 20px;
       font-size: 22px;
       color: #f1c40f;
+      animation: fadeInDown 0.6s ease;
     }
 
     .sidebar a {
       display: block;
-      padding: 12px 20px;
+      padding: 14px 20px;
       color: white;
       text-decoration: none;
       font-size: 16px;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.5s forwards;
     }
+
+    .sidebar a:nth-child(2) { animation-delay: 0.2s; }
+    .sidebar a:nth-child(3) { animation-delay: 0.4s; }
+    .sidebar a:nth-child(4) { animation-delay: 0.6s; }
+    .sidebar a:nth-child(5) { animation-delay: 0.8s; }
 
     .sidebar a:hover {
       background: #444;
       color: #f1c40f;
+      transform: translateX(8px);
     }
 
     .sidebar i {
       margin-right: 10px;
     }
 
-    /* Dark Mode Toggle Button */
-    .toggle-btn {
-      position: absolute;
+    /* Sidebar Toggle (Mobile) */
+    .menu-toggle {
+      display: none;
+      position: fixed;
       top: 15px;
-      right: 15px;
-      cursor: pointer;
+      left: 15px;
+      font-size: 26px;
       background: #f1c40f;
-      border: none;
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .toggle-btn:hover {
-      background: #e1b30d;
+      cursor: pointer;
+      z-index: 1100;
     }
 
     /* Main Content */
@@ -78,31 +85,35 @@
       margin-left: 220px;
       padding: 20px;
       flex: 1;
+      transition: margin-left 0.4s ease;
     }
 
     section {
       display: none;
+      transform: translateY(15px);
+      opacity: 0;
+      transition: all 0.6s ease;
     }
 
     section.active {
       display: block;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      transform: translateY(0);
+      opacity: 1;
     }
 
     h1 {
       color: #333;
+      font-size: 28px;
+      margin-bottom: 10px;
     }
 
     p {
       color: #555;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
-    /* Dark Mode Styles */
+    /* Dark Mode */
     body.dark {
       background: #121212;
       color: #eee;
@@ -133,11 +144,60 @@
       background: #444;
       color: #f1c40f;
     }
+
+    /* Dark Mode Button */
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      background: #f1c40f;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #e1b30d;
+    }
+
+    /* Keyframes */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .content {
+        margin-left: 0;
+        padding-top: 60px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Navigation -->
+  <!-- Mobile Menu Toggle -->
+  <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+  <!-- Sidebar -->
   <div class="sidebar">
     <h2>My Portfolio</h2>
     <a href="#" onclick="showSection('skills')"><i class="fas fa-cogs"></i> Skills</a>
@@ -148,7 +208,6 @@
 
   <!-- Main Content -->
   <div class="content">
-    <!-- Dark Mode Button -->
     <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
     <section id="skills" class="active">
@@ -158,17 +217,17 @@
 
     <section id="projects">
       <h1>📂 My Projects</h1>
-      <p>Here you can showcase projects with images, descriptions, and GitHub links.</p>
+      <p>Showcase your projects here with animations, images, and GitHub links.</p>
     </section>
 
     <section id="tutorials">
       <h1>📘 Tutorials</h1>
-      <p>Write tutorials, blogs, and guides here for your audience.</p>
+      <p>Write tutorials, blogs, and guides for your audience.</p>
     </section>
 
     <section id="contact">
       <h1>📩 Contact Me</h1>
-      <p>Email: <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com">muhammad.ibrahim.khan.yahoo@gmail.com</a></p>
+      <p>Email: <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com">muhammad.ibrahim.khan@yahoo@gmail.com</a></p>
       <p>LinkedIn: <a href="https://rb.gy/hvrwi0" target="_blank">linkedin.com/in/muhammad-ibrahim</a></p>
       <p>GitHub Repo: <a href="https://github.com/yourusername/yourrepo" target="_blank">Portfolio Repository</a></p>
     </section>
@@ -180,16 +239,21 @@
       let sections = document.querySelectorAll('section');
       sections.forEach(sec => sec.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
+
+      // Close sidebar on mobile after click
+      if(window.innerWidth <= 768) {
+        document.querySelector('.sidebar').classList.remove('active');
+      }
     }
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
       let btn = document.querySelector(".toggle-btn");
-      if (document.body.classList.contains("dark")) {
-        btn.innerHTML = "☀️ Light Mode";
-      } else {
-        btn.innerHTML = "🌙 Dark Mode";
-      }
+      btn.innerHTML = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+
+    function toggleMenu() {
+      document.querySelector('.sidebar').classList.toggle('active');
     }
   </script>
 </body>
