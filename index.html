@@ -29,31 +29,6 @@
       position: fixed;
       left: 0;
       top: 0;
-      transition: width 0.3s ease;
-      overflow: hidden;
-    }
-
-    .sidebar.collapsed {
-      width: 70px;
-    }
-
-    /* Toggle Button */
-    .toggle-btn {
-      position: absolute;
-      top: 15px;
-      right: -15px;
-      background: #00bcd4;
-      color: #fff;
-      border: none;
-      padding: 6px 8px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .toggle-btn:hover {
-      background: #0097a7;
     }
 
     /* Profile Card */
@@ -61,12 +36,6 @@
       text-align: center;
       margin-bottom: 30px;
       color: #fff;
-      transition: opacity 0.3s ease;
-    }
-
-    .sidebar.collapsed .profile-card {
-      opacity: 0;
-      pointer-events: none;
     }
 
     .profile-card img {
@@ -88,7 +57,6 @@
       margin: 0;
     }
 
-    /* Sidebar Buttons */
     .sidebar button {
       background: none;
       border: none;
@@ -100,14 +68,10 @@
       width: 100%;
       text-align: left;
       padding: 10px 20px;
-      display: flex;
-      align-items: center;
     }
 
     .sidebar button i {
       margin-right: 10px;
-      min-width: 20px;
-      text-align: center;
     }
 
     .sidebar button:hover {
@@ -115,20 +79,11 @@
       background: rgba(0,188,212,0.1);
     }
 
-    .sidebar.collapsed button span {
-      display: none;
-    }
-
     /* Content Area */
     .content {
       margin-left: 250px;
       padding: 30px;
       flex: 1;
-      transition: margin-left 0.3s ease;
-    }
-
-    .sidebar.collapsed ~ .content {
-      margin-left: 80px;
     }
 
     .page-section {
@@ -167,12 +122,7 @@
 <body>
 
   <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <!-- Toggle Button -->
-    <button class="toggle-btn" onclick="toggleSidebar()">
-      <i class="fas fa-angle-double-left"></i>
-    </button>
-
+  <div class="sidebar">
     <!-- Profile Card -->
     <div class="profile-card">
       <img src="https://via.placeholder.com/150" alt="Profile Photo">
@@ -181,10 +131,10 @@
     </div>
 
     <!-- Navigation Buttons -->
-    <button onclick="showSection('skills')"><i class="fas fa-cogs"></i><span> Skills</span></button>
-    <button onclick="showSection('projects')"><i class="fas fa-folder-open"></i><span> Projects</span></button>
-    <button onclick="showSection('tutorials')"><i class="fas fa-book"></i><span> Tutorials</span></button>
-    <button onclick="showSection('contact')"><i class="fas fa-envelope"></i><span> Contact</span></button>
+    <button onclick="showSection('skills')"><i class="fas fa-cogs"></i> Skills</button>
+    <button onclick="showSection('projects')"><i class="fas fa-folder-open"></i> Projects</button>
+    <button onclick="showSection('tutorials')"><i class="fas fa-book"></i> Tutorials</button>
+    <button onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</button>
   </div>
 
   <!-- Content -->
@@ -231,19 +181,6 @@
       let activeSec = document.getElementById(sectionId);
       activeSec.style.display = 'block';
       setTimeout(() => activeSec.classList.add('active'), 50);
-    }
-
-    function toggleSidebar() {
-      let sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("collapsed");
-
-      // Change icon
-      let icon = sidebar.querySelector(".toggle-btn i");
-      if (sidebar.classList.contains("collapsed")) {
-        icon.classList.replace("fa-angle-double-left", "fa-angle-double-right");
-      } else {
-        icon.classList.replace("fa-angle-double-right", "fa-angle-double-left");
-      }
     }
   </script>
 
