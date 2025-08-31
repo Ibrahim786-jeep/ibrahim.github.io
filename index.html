@@ -84,6 +84,14 @@
       transition: margin-left 0.3s;
     }
 
+    section {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+    section.active {
+      display: block;
+    }
+
     /* About Section */
     .about {
       margin-top: 40px;
@@ -175,11 +183,12 @@
       font-size: 30px;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
       z-index: 1000;
       animation: pulse 1.5s infinite;
     }
     .whatsapp-btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
 
     /* Animations */
@@ -193,9 +202,9 @@
       60% { transform: translateY(-5px); }
     }
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 15px 10px rgba(37, 211, 102, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 20px 10px rgba(37,211,102, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
     }
 
     /* Responsive */
@@ -228,10 +237,10 @@
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   <div class="sidebar" id="sidebar">
     <h2>My Portfolio</h2>
-    <a href="index.html"><i class="fas fa-user"></i> Resume</a>
-    <a href="skills.html"><i class="fas fa-cogs"></i> Skills</a>
-    <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
-    <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+    <a href="#" onclick="showSection('about')"><i class="fas fa-user"></i> About</a>
+    <a href="#" onclick="showSection('skills')"><i class="fas fa-cogs"></i> Skills</a>
+    <a href="#" onclick="showSection('projects')"><i class="fas fa-project-diagram"></i> Projects</a>
+    <a href="#" onclick="showSection('tutorials')"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
     <hr style="border: 0.5px solid #444; margin: 15px 0;">
     <!-- Contact Links in Sidebar -->
     <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -243,26 +252,62 @@
   <div class="content">
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-    <div class="about">
-      <h1><i class="fas fa-user-circle"></i> About Me</h1>
-      <img src="profile.png" alt="Profile Picture">
-      <h2>Muhammad Ibrahim</h2>
-      <p>
-        Mechanical Engineer specialized in CAD, simulation, structural analysis, and computational modeling. 
-        Passionate about solving complex engineering problems and applying numerical tools like 
-        ANSYS, SolidWorks, MATLAB, and Python in practical applications.
-      </p>
-      <a class="resume-btn" href="CV_Ibrahim.pdf" download="Muhammad_Ibrahim_CV.pdf">
-        <i class="fas fa-download"></i> Download CV
-      </a>
-
-      <!-- Social Links -->
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i></a>
+    <!-- About -->
+    <section id="about" class="active">
+      <div class="about">
+        <h1><i class="fas fa-user-circle"></i> About Me</h1>
+        <img src="profile.png" alt="Profile Picture">
+        <h2>Muhammad Ibrahim</h2>
+        <p>
+          Mechanical Engineer specialized in CAD, simulation, structural analysis, and computational modeling. 
+          Passionate about solving complex engineering problems and applying numerical tools like 
+          ANSYS, SolidWorks, MATLAB, and Python in practical applications.
+        </p>
+        <a class="resume-btn" href="CV_Ibrahim.pdf" download="Muhammad_Ibrahim_CV.pdf">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h1><i class="fas fa-cogs"></i> Skills</h1>
+      <ul>
+        <li>CAD Design (SolidWorks, AutoCAD)</li>
+        <li>FEA & Simulation (ANSYS, Abaqus, COMSOL)</li>
+        <li>Programming (Python, MATLAB, C++)</li>
+        <li>CFD & Thermal Analysis</li>
+        <li>Project Management & Technical Writing</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h1><i class="fas fa-project-diagram"></i> Projects</h1>
+      <ul>
+        <li>CFD Analysis of Supersonic Intake</li>
+        <li>Finite Element Analysis of Automotive Chassis</li>
+        <li>Heat Transfer Simulation in Gas Turbines</li>
+        <li>Design Optimization of Mechanical Components</li>
+      </ul>
+    </section>
+
+    <!-- Tutorials -->
+    <section id="tutorials">
+      <h1><i class="fas fa-chalkboard-teacher"></i> Tutorials</h1>
+      <p>I create tutorials on:</p>
+      <ul>
+        <li>ANSYS Fluent CFD Workflow</li>
+        <li>Structural Analysis with ANSYS Mechanical</li>
+        <li>MATLAB for Engineering Applications</li>
+        <li>Python for Scientific Computing</li>
+      </ul>
+    </section>
   </div>
 
   <!-- WhatsApp Button -->
@@ -276,6 +321,10 @@
     }
     function toggleMenu() {
       document.getElementById("sidebar").classList.toggle("active");
+    }
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
     }
   </script>
 </body>
