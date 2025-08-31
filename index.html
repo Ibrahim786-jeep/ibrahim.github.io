@@ -191,6 +191,53 @@
       transform: scale(1.2);
     }
 
+    /* Contact Form */
+    .contact {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    body.dark-mode .contact {
+      background: #1e1e1e;
+      color: #fff;
+    }
+    .contact h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #f1c40f;
+    }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+    .contact input:focus, .contact textarea:focus {
+      border-color: #f1c40f;
+      outline: none;
+    }
+    .contact button {
+      width: 100%;
+      padding: 12px;
+      background: #f1c40f;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .contact button:hover {
+      background: #000;
+      color: #f1c40f;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -241,6 +288,7 @@
     <a href="#" onclick="showSection('skills')"><i class="fas fa-cogs"></i> Skills</a>
     <a href="#" onclick="showSection('projects')"><i class="fas fa-project-diagram"></i> Projects</a>
     <a href="#" onclick="showSection('tutorials')"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+    <a href="#" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a>
     <hr style="border: 0.5px solid #444; margin: 15px 0;">
     <!-- Contact Links in Sidebar -->
     <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -308,6 +356,19 @@
         <li>Python for Scientific Computing</li>
       </ul>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="contact">
+        <h1><i class="fas fa-envelope"></i> Contact Me</h1>
+        <form action="https://formspree.io/f/xjkbpqyg" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="_replyto" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </section>
   </div>
 
   <!-- WhatsApp Button -->
@@ -323,11 +384,8 @@
       document.getElementById("sidebar").classList.toggle("active");
     }
     function showSection(id) {
-      // Hide all sections and show the clicked one
       document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
-
-      // If screen width is mobile, auto-close sidebar smoothly
       if (window.innerWidth <= 768) {
         document.getElementById("sidebar").classList.remove("active");
       }
