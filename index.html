@@ -2,100 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ibrahim's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio - Muhammad Ibrahim</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      background: #f4f4f9;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #222;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transition: width 0.3s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    /* Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: -15px;
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 6px 8px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #0097a7;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.collapsed .profile-card {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .profile-card img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #00bcd4;
+      margin-bottom: 10px;
+    }
+
+    .profile-card h3 {
+      margin: 5px 0;
+      font-size: 18px;
+    }
+
+    .profile-card p {
+      font-size: 14px;
+      color: #bbb;
+      margin: 0;
+    }
+
+    /* Sidebar Buttons */
+    .sidebar button {
+      background: none;
+      border: none;
+      color: #bbb;
+      font-size: 18px;
+      margin: 12px 0;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar button i {
+      margin-right: 10px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .sidebar button:hover {
+      color: #00bcd4;
+      background: rgba(0,188,212,0.1);
+    }
+
+    .sidebar.collapsed button span {
+      display: none;
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      flex: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.collapsed ~ .content {
+      margin-left: 80px;
+    }
+
+    .page-section {
+      display: none;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .page-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #222;
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <!-- Profile Picture (replace with your image link later) -->
-   <img src="professional pic for resume.png" alt="Profile Picture">
 
-    <h1>Hi, I'm Ibrahim 👋</h1>
-    <p>Mechanical Engineer | CAD & FEA Specialist | AI Enthusiast</p>
-  </header>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <!-- Toggle Button -->
+    <button class="toggle-btn" onclick="toggleSidebar()">
+      <i class="fas fa-angle-double-left"></i>
+    </button>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#tutorials">Tutorials</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m Ibrahim, a passionate Mechanical Engineer with expertise in CAD design, structural & thermal analysis, and robotics. I love blending engineering with AI and enjoy sharing knowledge through tutorials.</p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>🛠 CAD Design (SolidWorks, CATIA)</li>
-      <li>📊 Finite Element Analysis (ANSYS, Abaqus)</li>
-      <li>🐍 Python for Engineering</li>
-      <li>🤖 Robotics & AI in Mechanical Systems</li>
-    </ul>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>🔧 FEA of a Cylinder Head</h3>
-      <p>Performed structural & thermal analysis in ANSYS on an inline-4 cylinder head.</p>
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/150" alt="Profile Photo">
+      <h3>Muhammad Ibrahim</h3>
+      <p>Mechanical Engineer | CAD & FEA</p>
     </div>
 
-    <div class="project">
-      <h3>🛩️ WingtraRAY UAV Modeling</h3>
-      <p>Designed & simulated UAV components in SolidWorks with aerodynamic analysis.</p>
-    </div>
+    <!-- Navigation Buttons -->
+    <button onclick="showSection('skills')"><i class="fas fa-cogs"></i><span> Skills</span></button>
+    <button onclick="showSection('projects')"><i class="fas fa-folder-open"></i><span> Projects</span></button>
+    <button onclick="showSection('tutorials')"><i class="fas fa-book"></i><span> Tutorials</span></button>
+    <button onclick="showSection('contact')"><i class="fas fa-envelope"></i><span> Contact</span></button>
+  </div>
 
-    <div class="project">
-      <h3>🤖 Robotics Project</h3>
-      <p>Developed robotic system integrating mechatronics and AI for smart automation.</p>
-    </div>
-  </section>
+  <!-- Content -->
+  <div class="content">
+    <section id="skills" class="page-section active">
+      <h2>⚙️ My Skills</h2>
+      <p>Mechanical Engineering: CAD (SolidWorks, ANSYS), FEA, Design Analysis.</p>
+      <p>Software: Python, MATLAB, Java (basics), GitHub.</p>
+      <p>Other: Problem Solving, Technical Writing, Team Collaboration.</p>
+    </section>
 
-  <!-- Tutorials -->
-  <section id="tutorials">
-    <h2>Tutorials</h2>
-    <p>📘 Coming soon: My tutorials on CAD, FEA, and AI in Mechanical Engineering.</p>
-  </section>
+    <section id="projects" class="page-section">
+      <h2>📂 My Projects</h2>
+      <ul>
+        <li><b>WingtraRAY UAV Design</b> – CAD modeling + structural analysis in SolidWorks & ANSYS.</li>
+        <li><b>Radar Truck Analysis</b> – Structural + aerodynamic simulation in ANSYS.</li>
+        <li><b>IV Fluid Monitoring System</b> – IoT + MATLAB simulation.</li>
+      </ul>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" style="padding:50px 20px; text-align:center; background:#f9f9f9; margin-top:40px;">
-  <h2 style="color:#222; margin-bottom:20px;">📩 Contact Me</h2>
-  <p style="font-size:16px; margin-bottom:15px;">
-    I’m always open to networking, collaboration, or discussing engineering and technology.  
-  </p>
+    <section id="tutorials" class="page-section">
+      <h2>📘 Tutorials</h2>
+      <p>I regularly write tutorials for learners in mechanical engineering and coding.  
+      Coming soon: <b>“FEA Basics for Mechanical Engineers”</b>.</p>
+    </section>
 
-  <!-- Email -->
-  <p style="margin-bottom:10px;">
-    <strong>Email:</strong> 
-    <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com" style="color:#0077b5; text-decoration:none;">
-      muhammad.ibrahim.khan.yahoo@gmail.com
-    </a>
-  </p>
+    <section id="contact" class="page-section">
+      <h2>📩 Contact Me</h2>
+      <p>Email: <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com">muhammad.ibrahim.khan.yahoo@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://rb.gy/hvrwi0" target="_blank">linkedin.com/in/muhammad-ibrahim</a></p>
+      <p>GitHub Repo: <a href="https://github.com/ibrahim/ibrahim.github.io" target="_blank">View Portfolio Source</a></p>
+    </section>
+  </div>
 
-  <!-- LinkedIn -->
-  <p style="margin-bottom:10px;">
-    <strong>LinkedIn:</strong> 
-    <a href="https://rb.gy/hvrwi0" target="_blank" style="color:#0077b5; text-decoration:none;">
-      linkedin.com/in/muhammad-ibrahim
-    </a>
-  </p>
+  <!-- JavaScript -->
+  <script>
+    function showSection(sectionId) {
+      let sections = document.querySelectorAll('.page-section');
+      sections.forEach(sec => {
+        sec.classList.remove('active');
+        setTimeout(() => sec.style.display = 'none', 500);
+      });
 
-</section>
+      let activeSec = document.getElementById(sectionId);
+      activeSec.style.display = 'block';
+      setTimeout(() => activeSec.classList.add('active'), 50);
+    }
 
+    function toggleSidebar() {
+      let sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("collapsed");
 
-  <!-- Footer -->
-  <footer>
-    <p>Follow for such more content</p>
-  </footer>
+      // Change icon
+      let icon = sidebar.querySelector(".toggle-btn i");
+      if (sidebar.classList.contains("collapsed")) {
+        icon.classList.replace("fa-angle-double-left", "fa-angle-double-right");
+      } else {
+        icon.classList.replace("fa-angle-double-right", "fa-angle-double-left");
+      }
+    }
+  </script>
+
 </body>
 </html>
