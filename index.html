@@ -90,6 +90,8 @@
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.6s ease;
+      min-height: 100vh;
+      padding-top: 40px;
     }
     section.active {
       display: block;
@@ -278,11 +280,11 @@
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   <div class="sidebar" id="sidebar">
     <h2>My Portfolio</h2>
-    <a href="#" onclick="showSection('about', this)" class="active"><i class="fas fa-user"></i> About</a>
-    <a href="#" onclick="showSection('skills', this)"><i class="fas fa-cogs"></i> Skills</a>
-    <a href="#" onclick="showSection('projects', this)"><i class="fas fa-project-diagram"></i> Projects</a>
-    <a href="#" onclick="showSection('tutorials', this)"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
-    <a href="#" onclick="showSection('contact', this)"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#about" class="active"><i class="fas fa-user"></i> About</a>
+    <a href="#skills"><i class="fas fa-cogs"></i> Skills</a>
+    <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+    <a href="#tutorials"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     <hr style="border: 0.5px solid #444; margin: 15px 0;">
     <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i> GitHub</a>
@@ -375,32 +377,46 @@
   <button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Sidebar Section Switch + Active highlight
-    function showSection(id, el) {
-      document.querySelectorAll("section").forEach(sec => {
-        sec.classList.remove("active");
+    // Sidebar navigation + smooth scroll + scroll spy
+    document.querySelectorAll('.sidebar a[href^="#"]').forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+        target.classList.add("active");
+        window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+
+        document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+        this.classList.add("active");
+
+        if (window.innerWidth <= 768) {
+          document.getElementById("sidebar").classList.remove("active");
+        }
+
+        // Animate skill bars
+        if (target.id === "skills") {
+          document.querySelectorAll(".skill-progress").forEach(bar => {
+            bar.style.width = bar.getAttribute("data-progress");
+          });
+        } else {
+          document.querySelectorAll(".skill-progress").forEach(bar => {
+            bar.style.width = "0";
+          });
+        }
       });
-      const activeSection = document.getElementById(id);
-      activeSection.classList.add("active");
+    });
 
-      document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
-      if (el) el.classList.add("active");
-
-      if (window.innerWidth <= 768) {
-        document.getElementById("sidebar").classList.remove("active");
-      }
-
-      // Animate skill bars when Skills section is shown
-      if (id === "skills") {
-        document.querySelectorAll(".skill-progress").forEach(bar => {
-          bar.style.width = bar.getAttribute("data-progress");
-        });
-      } else {
-        document.querySelectorAll(".skill-progress").forEach(bar => {
-          bar.style.width = "0";
-        });
-      }
-    }
+    // Scroll spy
+    window.addEventListener("scroll", () => {
+      let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      document.querySelectorAll("section").forEach(sec => {
+        if (scrollPos >= sec.offsetTop - 100 && scrollPos < sec.offsetTop + sec.offsetHeight - 100) {
+          document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+          let activeLink = document.querySelector('.sidebar a[href="#' + sec.id + '"]');
+          if (activeLink) activeLink.classList.add("active");
+        }
+      });
+    });
 
     // Dark mode with memory
     function toggleDarkMode() {
