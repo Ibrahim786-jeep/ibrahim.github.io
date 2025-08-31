@@ -159,6 +159,29 @@
       color: #f1c40f;
     }
 
+    /* WhatsApp Button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      z-index: 1000;
+    }
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -170,7 +193,7 @@
       60% { transform: translateY(-5px); }
     }
 
-    /* Responsive Design */
+    /* Responsive */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
@@ -205,6 +228,11 @@
     <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
     <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
     <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <hr style="border: 0.5px solid #444; margin: 15px 0;">
+    <!-- Contact Links in Sidebar -->
+    <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i> Email</a>
   </div>
 
   <!-- Content -->
@@ -226,12 +254,17 @@
 
       <!-- Social Links -->
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:YOUR-EMAIL@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
   </div>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/923105395331" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script>
     function toggleDarkMode() {
