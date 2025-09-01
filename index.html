@@ -462,5 +462,68 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
+<style>
+  /* 🔹 Project Gallery Adjustments */
+  .project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  .project-gallery img {
+    max-width: calc(50% - 12px); /* Fit neatly on laptop beside sidebar */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #f1c40f;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .project-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  /* 🔹 Responsive Fix for Mobile */
+  @media (max-width: 768px) {
+    .project-gallery img {
+      max-width: 100%; /* Take full width when sidebar hidden */
+      height: auto;
+    }
+  }
+</style>
+
+<script>
+  // Sidebar navigation + smooth scroll + scroll spy
+  document.querySelectorAll('.sidebar a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      target.classList.add("active");
+      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+
+      document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+      this.classList.add("active");
+
+      // 🔹 FIX: Always auto-hide sidebar on mobile (including Projects)
+      if (window.innerWidth <= 768) {
+        document.getElementById("sidebar").classList.remove("active");
+      }
+
+      // Animate skill bars
+      if (target.id === "skills") {
+        document.querySelectorAll(".skill-progress").forEach(bar => {
+          bar.style.width = bar.getAttribute("data-progress");
+        });
+      } else {
+        document.querySelectorAll(".skill-progress").forEach(bar => {
+          bar.style.width = "0";
+        });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
