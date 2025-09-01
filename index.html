@@ -336,18 +336,85 @@
     <!-- Projects -->
 <!-- Projects -->
 <section id="projects">
-  <h1><i class="fas fa-project-diagram"></i> Projects</h1>
-  <ul>
-    <li>
-      <h3>B-2 Spirit Bomber (SolidWorks Project)</h3>
+  <h2>Projects</h2>
+
+  <!-- 🔹 Tabs -->
+  <div class="tabs">
+    <button class="tab-button active" data-tab="b2">B-2 Spirit Bomber</button>
+    <button class="tab-button" data-tab="other">Other Projects</button>
+  </div>
+
+  <!-- 🔹 Tab Contents -->
+  <div class="tab-content active" id="b2">
+    <div class="project">
+      <h3>B-2 Spirit Bomber Analysis</h3>
       <p>
-        Designed a detailed 3D CAD model of the <strong>B-2 Spirit Stealth Bomber</strong> in SolidWorks.  
-        This project involved advanced surface modeling techniques, precise geometric control, and 
-        structural considerations to replicate the aerodynamic stealth geometry of the aircraft.  
-        The work also included component assembly, part detailing, and rendering for visualization.  
-        This project demonstrates expertise in aerospace design, SolidWorks advanced features, and 
-        the ability to handle large-scale complex models.
+        A detailed aerodynamic and stealth performance analysis of the B-2 Spirit Bomber, 
+        focusing on radar cross-section reduction and CFD simulation results.
       </p>
+      <div class="project-gallery">
+        <img src="images/b2-1.png" alt="B-2 Spirit Bomber view">
+        <img src="images/b2-2.png" alt="CFD Simulation of B-2">
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="other">
+    <div class="project">
+      <h3>Other Projects</h3>
+      <p>Additional engineering and CFD-based projects will be displayed here.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 🔹 Tabs styling */
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .tab-button {
+    padding: 10px 20px;
+    border: none;
+    background: #203a43;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+  .tab-button.active {
+    background: #00e5ff;
+    color: #203a43;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  // 🔹 Tab functionality
+  document.querySelectorAll(".tab-button").forEach(button => {
+    button.addEventListener("click", () => {
+      const tab = button.getAttribute("data-tab");
+
+      document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+      document.getElementById(tab).classList.add("active");
+    });
+  });
+</script>
 
       <!-- Thumbnails -->
       <div class="project-gallery">
