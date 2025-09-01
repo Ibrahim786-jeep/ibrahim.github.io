@@ -3,73 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Ibrahim | Mechanical Engineer</title>
+  <title>Ibrahim's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Sidebar -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <div class="sidebar" id="sidebar">
+    <h2>My Portfolio</h2>
+    <a href="#about" class="active"><i class="fas fa-user"></i> About</a>
+    <a href="#skills"><i class="fas fa-cogs"></i> Skills</a>
+    <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+    <a href="#tutorials"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    <hr style="border: 0.5px solid #444; margin: 15px 0;">
+    <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+  </div>
 
-  <!-- Header -->
-  <header>
-    <img src="professional pic for resume.png" alt="Profile Picture">
-    <h1>Muhammad Ibrahim</h1>
-    <p>Mechanical Engineer | CFD Specialist | Research Enthusiast</p>
-  </header>
+  <!-- Content -->
+  <div class="content">
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#tutorials">Tutorials</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- Sections -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a passionate Mechanical Engineer with expertise in CFD, design, and simulation. I focus on innovative solutions for real-world engineering challenges.</p>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>CFD Analysis (ANSYS Fluent, OpenFOAM)</li>
-      <li>Mechanical Design (SolidWorks, AutoCAD)</li>
-      <li>Finite Element Analysis (ANSYS, Abaqus)</li>
-      <li>Thermal & Fluid Systems</li>
-      <li>Research & Technical Writing</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>B-2 Spirit Bomber Aerodynamics</h3>
-      <p>CFD simulation and aerodynamic study of stealth bomber with focus on drag reduction and lift optimization.</p>
-      <div class="project-gallery">
-        <img src="project1.png" alt="B-2 Spirit Simulation">
-        <img src="project2.png" alt="Flow Analysis">
+    <!-- About -->
+    <section id="about" class="active">
+      <div class="about">
+        <h1><i class="fas fa-user-circle"></i> About Me</h1>
+        <img src="profile.png" alt="Profile Picture">
+        <h2>Muhammad Ibrahim</h2>
+        <p>Mechanical Engineer specialized in CAD, simulation, structural analysis, and computational modeling. Passionate about solving complex engineering problems and applying numerical tools like ANSYS, SolidWorks, MATLAB, and Python in practical applications.</p>
+        <a class="resume-btn" href="CV_Ibrahim.pdf" download="Muhammad_Ibrahim_CV.pdf">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="tutorials">
-    <h2>Tutorials</h2>
-    <p>Coming soon: CFD & Mechanical Design tutorials for students and professionals.</p>
-  </section>
+    <!-- Skills -->
+    <section id="skills">
+      <h1><i class="fas fa-cogs"></i> Skills</h1>
+      <div class="skill"><span>CAD Design</span>
+        <div class="skill-bar"><div class="skill-progress" data-progress="90%"></div></div>
+      </div>
+      <div class="skill"><span>FEA & Simulation</span>
+        <div class="skill-bar"><div class="skill-progress" data-progress="85%"></div></div>
+      </div>
+      <div class="skill"><span>Programming (Python, MATLAB, C++)</span>
+        <div class="skill-bar"><div class="skill-progress" data-progress="80%"></div></div>
+      </div>
+      <div class="skill"><span>CFD & Thermal Analysis</span>
+        <div class="skill-bar"><div class="skill-progress" data-progress="75%"></div></div>
+      </div>
+      <div class="skill"><span>Project Management</span>
+        <div class="skill-bar"><div class="skill-progress" data-progress="70%"></div></div>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 <a href="mailto:muhammad.ibrahim.khan.yahoo@gmail.com">muhammad.ibrahim.khan.yahoo@gmail.com</a></p>
-    <p>🔗 <a href="https://www.linkedin.com/in/muhammad-ibrahim-415a47285/" target="_blank">LinkedIn</a></p>
-    <p>💻 <a href="https://ibrahim786-jeep.github.io/ibrahim.github.io/index.html" target="_blank">GitHub</a></p>
-    <p>📄 <a href="CV Ibrahim.pdf" download>Download My CV</a></p>
-  </section>
+    <!-- Projects -->
+    <section id="projects">
+      <h1><i class="fas fa-project-diagram"></i> Projects</h1>
+      <ul>
+        <li>
+          <h3>B-2 Spirit Bomber (SolidWorks Project)</h3>
+          <p>
+            Designed a detailed 3D CAD model of the <strong>B-2 Spirit Stealth Bomber</strong> in SolidWorks.  
+            This project involved advanced surface modeling techniques, precise geometric control, and 
+            structural considerations to replicate the aerodynamic stealth geometry of the aircraft.  
+            The work also included component assembly, part detailing, and rendering for visualization.  
+          </p>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Muhammad Ibrahim | Mechanical Engineer</p>
-  </footer>
+          <!-- Thumbnails -->
+          <div class="project-gallery">
+            <img src="pic.jpg" alt="B-2 Bomber View 1">
+            <img src="Picture1.jpg" alt="B-2 Bomber View 2">
+            <img src="Picture2.jpg" alt="B-2 Bomber View 3">
+            <img src="Picture 6.png" alt="B-2 Bomber View 4">
+          </div>
+        </li>
+        <li>CFD Analysis of Supersonic Intake</li>
+        <li>Finite Element Analysis of Automotive Chassis</li>
+        <li>Heat Transfer Simulation in Gas Turbines</li>
+        <li>Design Optimization of Mechanical Components</li>
+      </ul>
+    </section>
+
+    <!-- Tutorials -->
+    <section id="tutorials">
+      <h1><i class="fas fa-chalkboard-teacher"></i> Tutorials</h1>
+      <ul>
+        <li>ANSYS Fluent CFD Workflow</li>
+        <li>Structural Analysis with ANSYS Mechanical</li>
+        <li>MATLAB for Engineering Applications</li>
+        <li>Python for Scientific Computing</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact">
+        <h1><i class="fas fa-envelope"></i> Contact Me</h1>
+        <form action="https://formspree.io/f/xjkbpqyg" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="_replyto" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/923105395331" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Back to Top -->
+  <button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
   <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox">
@@ -77,34 +130,71 @@
     <img class="lightbox-content" id="lightbox-img">
   </div>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/923105395331" target="_blank" class="whatsapp-float">
-    💬
-  </a>
-
-  <!-- JavaScript -->
   <script>
-    // Active nav highlight on scroll
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+    // Sidebar navigation
+    document.querySelectorAll('.sidebar a[href^="#"]').forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+        target.classList.add("active");
+        window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
 
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
+        document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+        this.classList.add("active");
+
+        if (window.innerWidth <= 768) {
+          document.getElementById("sidebar").classList.remove("active");
         }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
+
+        // Animate skill bars
+        if (target.id === "skills") {
+          document.querySelectorAll(".skill-progress").forEach(bar => {
+            bar.style.width = bar.getAttribute("data-progress");
+          });
+        } else {
+          document.querySelectorAll(".skill-progress").forEach(bar => {
+            bar.style.width = "0";
+          });
         }
       });
     });
 
-    // Lightbox functionality
+    // Scroll spy
+    window.addEventListener("scroll", () => {
+      let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      document.querySelectorAll("section").forEach(sec => {
+        if (scrollPos >= sec.offsetTop - 100 && scrollPos < sec.offsetTop + sec.offsetHeight - 100) {
+          document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+          let activeLink = document.querySelector('.sidebar a[href="#' + sec.id + '"]');
+          if (activeLink) activeLink.classList.add("active");
+        }
+      });
+    });
+
+    // Dark mode with memory
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    }
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    // Back to Top
+    window.onscroll = function() {
+      document.getElementById("backToTop").style.display =
+        document.documentElement.scrollTop > 200 ? "block" : "none";
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
     const closeBtn = document.querySelector(".lightbox .close");
@@ -116,16 +206,8 @@
       });
     });
 
-    closeBtn.addEventListener("click", () => {
-      lightbox.style.display = "none";
-    });
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = "none";
-      }
-    });
+    closeBtn.addEventListener("click", () => lightbox.style.display = "none");
+    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.style.display = "none"; });
   </script>
-
 </body>
 </html>
