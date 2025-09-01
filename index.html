@@ -659,6 +659,22 @@ window.addEventListener("click", (e) => {
     lightbox.style.display = "none";
   }
 });
+    // Keyboard navigation
+  window.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "block") {
+      if (e.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+      }
+      if (e.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+      }
+      if (e.key === "Escape") {
+        lightbox.style.display = "none";
+      }
+    }
+  });
 </script>
 
 </body>
